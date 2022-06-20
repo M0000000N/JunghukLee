@@ -52,7 +52,7 @@ int Select(int maxSelect, int x, int y)
         default:
             goto_xy(x, y);
             cout << "> ";
-            menuPos = 1;
+            return menuPos; 
             break;
         }
     }
@@ -118,7 +118,7 @@ void TitleScene()
     {
         Scene_First();
     }
-    if (Select(2, x, y) == 2)
+    else if (Select(2, x, y) == 2)
     {
         GameOver();
     }
@@ -142,12 +142,11 @@ void Scene_First()
 
     Select(2, 30, y) == 1;
 
-    if (Select(2,x, y) == 1)
+    if (Select(2, x, y) == 1)
     {
         Scene_Second();
     }
-
-    if (Select(2, x, y) == 2)
+    else if (Select(2, x, y) == 2)
     {
         GameOver();
     }
@@ -175,7 +174,7 @@ void Scene_Second()
     int monsterHP = 100;
     int select = Select(4, x, y);
 
-    while (playerHP != 0 || monsterHP != 0)
+    while (playerHP > 0 || monsterHP > 0)
     {
         Clear();
         goto_xy(20, y - 5);
@@ -210,14 +209,16 @@ void Scene_Second()
 				playerHP -= 10;
 			}
 		}
-    }
-    if (playerHP == 0)
-    {
-        GameOver();
-    }
-    if (monsterHP == 0)
-    {
-        Scene_Third();
+		if (playerHP == 0)
+		{
+			GameOver();
+            break;
+		}
+		if (monsterHP == 0)
+		{
+			Scene_Third();
+            break;
+		}
     }
 
 }  
@@ -235,14 +236,11 @@ void Scene_Third()
     goto_xy(30, 5);
     cout << "ºñ±â°Å³ª Áø´Ù¸é ÀÚ³×´Â Á×´Â´Ù.\"";
 
-    goto_xy(x, y);
-    cout << "> ";
-
     goto_xy(33, y);
     cout << "1. ¹¬";
     goto_xy(33, y + 1);
     cout << "2. Âî";
-    goto_xy(33, y + 1);
+    goto_xy(33, y + 2);
     cout << "3. ºü";
 
 	while (true)
