@@ -104,7 +104,6 @@ void TitleScene()
     goto_xy(30, 5);
     cout << "º¸°í½Í¾ú¾î¿ä ¸®Á¤Çõ¾¾";
 
-    Select(2, 30, y) == 1
     /*goto_xy(x, y);
     cout << "> ";*/
 
@@ -114,6 +113,7 @@ void TitleScene()
 
     goto_xy(33, y + 1);
     cout << "Exit";
+    Select(2, 30, y) == 1;
     if (Select(2,x,y) == 1)
     {
         Scene_First();
@@ -152,6 +152,8 @@ void Scene_First()
 
 void Scene_Second()
 {
+    Clear();
+
     goto_xy(30, 5);
     cout << "ÀÚ¸®¿¡¼­ ¹ú¶± ÀÏ¾î³ª À±¼¼¸®°¡ »ì°íÀÖ´Â ¾Æ·§µ¿³×·Î ¹«ÀÛÁ¤ ´Þ·Á°¬´Ù.";
     goto_xy(30, 6);
@@ -216,6 +218,8 @@ void Scene_Second()
 
 void Scene_Third()
 {
+    Clear();
+
     goto_xy(30, 5);
     cout << "ÃÖÁ¾º¸½º ±èÀå±ºÀ» ¸¸³µ´Ù.";
     goto_xy(30, 5);
@@ -253,6 +257,8 @@ void Scene_Third()
 
 void Scene_Fourth()
 {
+    Clear();
+
     goto_xy(30, 5);
     cout << "¸®Á¤ÇõÀº ¾Æ·§µ¿³×¿¡¼­ À±¼¼¸®¸¦ ¸¸³µ´Ù.";
     goto_xy(30, 5);
@@ -276,5 +282,5 @@ void GameOver()
     cout << "¡á¡á      ¡á¡á  ¡á¡á       ¡á¡á   ¡á¡á¡á¡á¡á¡á¡á¡á   ¡á¡á¡á¡á¡á\n";
     cout << "¡á¡á      ¡á¡á   ¡á¡á     ¡á¡á    ¡á¡á               ¡á¡á  ¡á¡á\n";
     cout << "¡á¡á      ¡á¡á    ¡á¡á¡á¡á¡á      ¡á¡á               ¡á¡á     ¡á¡á\n";
-    cout << " ¡á¡á¡á¡á¡á¡á        ¡á¡á         ¡á¡á¡á¡á¡á¡á¡á¡á   ¡á¡á       ¡á¡á\n";
+    cout << " ¡á¡á¡á¡á¡á¡á        ¡á¡á         ¡á¡á¡á¡á¡á¡á¡á¡á   ¡á¡á      ¡á¡á\n";
 }
