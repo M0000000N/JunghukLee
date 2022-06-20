@@ -30,7 +30,7 @@ int Select(int maxSelect, int x, int y)
                 goto_xy(x, y);
                 cout << " ";
                 goto_xy(x, --y);
-                cout << "> ";
+                cout << ">";
                 menuPos--;
             }
             break;
@@ -40,7 +40,7 @@ int Select(int maxSelect, int x, int y)
                 goto_xy(x, y);
                 cout << " ";
                 goto_xy(x, ++y);
-                cout << "> ";
+                cout << ">";
                 menuPos++;
             }
             break;
@@ -98,7 +98,7 @@ int MonsterChoice(int max)
 
 void TitleScene()
 {
-    x = 30;
+    x = 28;
     y = 8;
     //system("mode con cols=37 lines=24");
     goto_xy(30, 5);
@@ -126,6 +126,8 @@ void TitleScene()
 
 void Scene_First()
 {
+    x = 28;
+    y = 8;
     Clear();
     goto_xy(30, 5);
     cout << "윗동네에 사는 리정혁은 윤세리를 그리워하며 하루하루를 보내고 있다.";
@@ -134,24 +136,27 @@ void Scene_First()
     //cout << "> ";
 
     goto_xy(33, y);
-    cout << "1. 현실에 안주한다.";
+    cout << "1. 사랑을 쫒아간다.";
     goto_xy(33, y + 1);
-    cout << "2. 사랑을 쫒아간다. ";
+    cout << "2. 현실에 안주한다.";
 
-    Select(2, 33, y) == 1;
+    Select(2, 30, y) == 1;
 
-    if (Select(2,30, y) == 1)
-    {
-        GameOver();
-    }
-    if (Select(2, 30, y) == 2)
+    if (Select(2,x, y) == 1)
     {
         Scene_Second();
+    }
+
+    if (Select(2, x, y) == 2)
+    {
+        GameOver();
     }
 }
 
 void Scene_Second()
 {
+    x = 28;
+    y = 8;
     Clear();
 
     goto_xy(30, 5);
@@ -170,9 +175,11 @@ void Scene_Second()
     int monsterHP = 100;
     int select = Select(4, x, y);
 
-    while (playerHP == 0 || monsterHP == 0)
+    while (playerHP != 0 || monsterHP != 0)
     {
         Clear();
+        goto_xy(20, y - 5);
+		cout << "리정혁의 체력 : " << playerHP << "\t상대의 체력 : " << monsterHP;
 		if (select == 1)
 		{
 			if (MonsterChoice(2) == 1)
@@ -203,7 +210,6 @@ void Scene_Second()
 				playerHP -= 10;
 			}
 		}
-		cout << "리정혁의 체력 : " << playerHP << "\t상대의 체력 : " << monsterHP;
     }
     if (playerHP == 0)
     {
@@ -218,6 +224,8 @@ void Scene_Second()
 
 void Scene_Third()
 {
+    x = 28;
+    y = 8;
     Clear();
 
     goto_xy(30, 5);
